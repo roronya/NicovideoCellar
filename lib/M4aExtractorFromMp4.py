@@ -12,6 +12,6 @@ class M4aExtractorFromMp4(SoundExtractor):
         sound = {'id': self._video['id'],
                  'content': content,
                  'type': 'm4a',
-                 'title': video['title']}                
+                 'title': self._video['title']}
 
         return sound

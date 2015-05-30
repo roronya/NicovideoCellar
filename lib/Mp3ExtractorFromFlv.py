@@ -12,6 +12,6 @@ class Mp3ExtractorFromFlv(SoundExtractor):
         sound = {'id': self._video['id'],
                  'content': content,
                  'type': 'mp3',
-                 'title': video['title']}
+                 'title': self._video['title']}
                  
         return sound
