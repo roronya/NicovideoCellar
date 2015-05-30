@@ -13,6 +13,7 @@ class ExNicovideoAPI(NicovideoAPI):
                  'type': thumb_info['movie_type'],
                  'id': video_id,
                  'title': thumb_info['title']}
+
         return video
 
     def get_sound(self, video_id):
