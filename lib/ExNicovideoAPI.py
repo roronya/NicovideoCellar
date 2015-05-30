@@ -1,6 +1,6 @@
 from NicovideoAPI import NicovideoAPI
 
-class MyNicovideoAPI(NicovideoAPI):
+class ExNicovideoAPI(NicovideoAPI):
     def __init__(self, mailaddress, password):
         super().__init__(mailaddress, password)
 
