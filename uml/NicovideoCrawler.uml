@@ -1,0 +1,18 @@
+@startuml
+        !include color.inc
+
+        abstract SoundExtractor {
+                 +extract()
+        }
+
+        NicovideoAPI <.. MyNicovideoAPI
+        SoundExtractorFactory <.. MyNicovideoAPI
+        Mp3ExtractorFromFlv <.. SoundExtractorFactory
+        Mp3ExtractorFromSwf <.. SoundExtractorFactory
+        M4aExtractorFromMp4 <.. SoundExtractorFactory
+        SoundExtractor <|-- Mp3ExtractorFromFlv
+        SoundExtractor <|-- Mp3ExtractorFromSwf
+        SoundExtractor <|-- M4aExtractorFromMp4
+        MyNicovideoAPI <.. NicovideoCrawler
+        DBHandler <.. NicovideoCrawler
+@enduml
