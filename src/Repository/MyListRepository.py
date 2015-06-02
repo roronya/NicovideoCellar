@@ -1,19 +1,19 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../entity')
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../lib')
+sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
 
 import re
 
-from ConfigReader import ConfigReader
 from sqlalchemy.orm import sessionmaker
-from Base import *
-from MyList import MyList
+from ConfigReader.ConfigReader import ConfigReader
+from Entity.Base import *
+from Entity.MyList import MyList
 
 class MyListRepository:
     def __init__(self):
         self._session = sessionmaker(bind=engine)()
-        self._config = ConfigReader().read()
+        self._config = ConfigReader().read(os.path.abspath(os.path.dirname(__file__)) + '/../../config.json')
 
     def find(self, id):
         return self._session.query(MyList).filter(MyList.id == id).one()
