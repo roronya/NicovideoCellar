@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import subprocess
 import os
-from SoundExtractor import SoundExtractor
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
+
+from SoundExtractor.SoundExtractor import SoundExtractor
 
 class Mp3ExtractorFromFlv(SoundExtractor):
     def extract(self):

@@ -1,8 +1,14 @@
-from NicovideoAPI import NicovideoAPI
-from SoundExtractorFactory import SoundExtractorFactory
+# -*- coding: utf-8 -*-
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
+
 import requests
 from pyquery import PyQuery as pq
 import re
+
+from NicovideoAPI.NicovideoAPI import NicovideoAPI
+from SoundExtractor.SoundExtractorFactory import SoundExtractorFactory
 
 class ExNicovideoAPI(NicovideoAPI):
     def __init__(self, mailaddress, password):

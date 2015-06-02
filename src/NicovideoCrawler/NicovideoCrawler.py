@@ -1,19 +1,18 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../entity')
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../lib')
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../repository')
+sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
 
-from MyList import MyList
-from Video import Video
-from MyListRepository import MyListRepository
-from VideoRepository import VideoRepository
-from ExNicovideoAPI import ExNicovideoAPI
-from ConfigReader import ConfigReader
+from Entity.MyList import MyList
+from Entity.Video import Video
+from Repository.MyListRepository import MyListRepository
+from Repository.VideoRepository import VideoRepository
+from NicovideoAPI.ExNicovideoAPI import ExNicovideoAPI
+from ConfigReader.ConfigReader import ConfigReader
 
 class NicovideoCrawler:
     def __init__(self):
-        self._config = ConfigReader().read()
+        self._config = ConfigReader().read(os.path.abspath(os.path.dirname(__file__)) + '/../../config.json')
         self._mylist_repository = MyListRepository()
         self._video_repository = VideoRepository()
         self._ex_nicovideo_api = ExNicovideoAPI(self._config['mail'], self._config['password'])
