@@ -5,5 +5,6 @@ from Base import *
 class Video(Base):
     __tablename__ = 'video'
 
-    id = Column(String, primary_key = True)
+    formal_id = Column(Integer, primary_key=True)
+    id = Column(String)
     mylist_id = Column(String, ForeignKey('mylist.id'))
