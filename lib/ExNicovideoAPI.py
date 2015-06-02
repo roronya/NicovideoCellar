@@ -31,3 +31,14 @@ class ExNicovideoAPI(NicovideoAPI):
         dom = pq(mylist_xml.content, parser='xml')
 
         return [re.search(r'[^/]*$', link.text).group(0) for link in dom('channel item link')]
+
+    def get_mylist_info(self, mylist_id):
+        mylist_xml = requests.get('http://www.nicovideo.jp/mylist/{0}?rss=2.0&lkang=ja-jp'.format(mylist_id))
+        dom = pq(mylist_xml.content, parser='xml')
+        title = dom('channel > title').text()
+        creator = dom('channel > dc\:creator').text()
+        mylist = {'id': mylist_id,
+                  'title': title,
+                  'creator': creator}
+
+        return mylist
