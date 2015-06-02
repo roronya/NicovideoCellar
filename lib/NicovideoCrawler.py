@@ -7,11 +7,13 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/../repository')
 from MyList import MyList
 from MyListRepository import MyListRepository
 from ExNicovideoAPI import ExNicovideoAPI
+from ConfigReader import ConfigReader
 
 class NicovideoCrawler:
-    def __init__(self, mylist_repository, ex_nicovideo_api):
-        self._mylist_repository = mylist_repository
-        self._ex_nicovideo_api = ex_nicovideo_api
+    def __init__(self):
+        config = ConfigReader().read()
+        self._mylist_repository = MyListRepository()
+        self._ex_nicovideo_api = ExNicovideoAPI(config['mail'], config['password'])
 
     def register(self, mylist_id):
         if not self._mylist_repository.is_exist(mylist_id):

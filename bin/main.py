@@ -10,8 +10,5 @@ from NicovideoCrawler import NicovideoCrawler
 from ConfigReader import ConfigReader
 
 if __name__ == '__main__':
-    config = ConfigReader().read()
-    mylist_repository = MyListRepository()
-    ex_nicovideo_api = ExNicovideoAPI(config['mail'], config['password'])
-    nicovideo_crawler = NicovideoCrawler(mylist_repository, ex_nicovideo_api)
+    nicovideo_crawler = NicovideoCrawler()
     nicovideo_crawler.register('3291521')
