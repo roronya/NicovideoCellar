@@ -11,4 +11,4 @@ from ConfigReader import ConfigReader
 
 if __name__ == '__main__':
     nicovideo_crawler = NicovideoCrawler()
-    nicovideo_crawler.register('3291521')
+    nicovideo_crawler.check_update()

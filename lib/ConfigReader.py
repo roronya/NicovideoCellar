@@ -10,5 +10,4 @@ class ConfigReader:
         config_json = file_handler.read()
         file_handler.close()
         config = json.loads(config_json)
-        
         return config
