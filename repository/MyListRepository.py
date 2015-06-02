@@ -13,6 +13,9 @@ class MyListRepository:
     def find(self, id):
         return self._session.query(MyList).filter(MyList.id == id).one()
 
+    def find_all(self):
+        return self._session.query(MyList).all()
+
     def is_exist(self, mylist_id):
         if 0 < len(self._session.query(MyList).filter(MyList.id == mylist_id).all()):
             return True
