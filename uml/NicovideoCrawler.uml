@@ -1,18 +1,116 @@
 @startuml
         !include color.inc
 
+        class NicovideoCrawler {
+              
+        }
+        
+        package lib {
+        class ExNicovideoAPI {
+              -_cookies
+              +__init__(mailaddress, password)
+              +login(mailaddress, password)
+              +get_thumb_info(video_id)
+              +get_flv(video_id)
+              +get_video(video_id)
+              +get_sound(video_id)
+              +get_video_ids_from_mylist(mylist_id)
+              -_get_flv_url(video_id)
+              -_get_nicohistory_cookie(video_id)
+         }
+
+         class NicovideoAPI {
+               -_cookies
+               +__init__(mailaddress, password)
+               +login(mailaddress, password)
+               +get_thumb_info(video_id)
+               +get_flv(video_id)
+               -_get_flv_url(video_id)
+               -_get_nicohistory_cookie(video_id)
+               }
+
+        class ConfigReader {
+              +read()
+        }
+
+        class SoundExtractorFactory {
+              +create(video)
+        }
+
+        class Mp3ExtractorFromFlv {
+              -_path
+              +__init__(video)
+              +extract()
+        }
+
+        class Mp3ExtractorFromSwf {
+              -_path
+              +__init__(video)
+              +extract()
+        }
+
+        class M4aExtractorFromMp4 {
+              -_path
+              +__init__(video)
+              +extract()
+        }
+
         abstract SoundExtractor {
+                 -_path
+                 +__init__(video)
                  +extract()
         }
 
-        NicovideoAPI <.. MyNicovideoAPI
-        SoundExtractorFactory <.. MyNicovideoAPI
-        Mp3ExtractorFromFlv <.. SoundExtractorFactory
-        Mp3ExtractorFromSwf <.. SoundExtractorFactory
-        M4aExtractorFromMp4 <.. SoundExtractorFactory
-        SoundExtractor <|-- Mp3ExtractorFromFlv
-        SoundExtractor <|-- Mp3ExtractorFromSwf
-        SoundExtractor <|-- M4aExtractorFromMp4
-        MyNicovideoAPI <.. NicovideoCrawler
-        DBHandler <.. NicovideoCrawler
+        }
+        
+        package entity {
+               
+        class Video {
+              +formal_id
+              +id
+              +mylist_id
+        }
+
+        class MyList {
+              +formal_id
+              +id
+              +videos
+        }
+
+        class Base {
+
+        }
+
+        }
+
+        package repository {
+        class MyListRepository {
+              -_session
+              +__init__()
+              +find(id)
+              +save(mylist)
+        }        
+
+        }
+
+              
+        NicovideoCrawler ..> ExNicovideoAPI
+        NicovideoCrawler ..> MyListRepository
+        NicovideoCrawler ..> ConfigReader
+        
+        ExNicovideoAPI --|> NicovideoAPI
+        ExNicovideoAPI ..> SoundExtractorFactory
+        SoundExtractorFactory ..> Mp3ExtractorFromFlv
+        SoundExtractorFactory ..> Mp3ExtractorFromSwf
+        SoundExtractorFactory ..> M4aExtractorFromMp4
+        Mp3ExtractorFromFlv ..|> SoundExtractor
+        Mp3ExtractorFromSwf ..|> SoundExtractor
+        M4aExtractorFromMp4 ..|> SoundExtractor
+        
+        MyListRepository ..> ConfigReader
+        MyListRepository ..> Base
+        MyListRepository ..> MyList
+        MyList --|> Base
+        Video --|> Base
+        Video --o MyList
 @enduml
