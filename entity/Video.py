@@ -7,4 +7,7 @@ class Video(Base):
 
     formal_id = Column(Integer, primary_key=True)
     id = Column(String)
+    content = None
+    title = None
+    type = None
     mylist_id = Column(String, ForeignKey('mylist.id'))

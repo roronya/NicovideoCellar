@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import subprocess
+import os
 from SoundExtractor import SoundExtractor
 
 class Mp3ExtractorFromFlv(SoundExtractor):
@@ -9,9 +10,10 @@ class Mp3ExtractorFromFlv(SoundExtractor):
         file_handler = open(sound_path, 'rb')
         content = file_handler.read()
         file_handler.close()
+        os.remove(sound_path)
+        os.remove(self._video_path)
         sound = {'id': self._video['id'],
                  'content': content,
                  'type': 'mp3',
                  'title': self._video['title']}
-                 
         return sound
