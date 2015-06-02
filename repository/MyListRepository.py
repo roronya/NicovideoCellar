@@ -21,4 +21,4 @@ class MyListRepository:
 
     def save(self, mylist):
         self._session.add(mylist)
-        self._session.commmit()
+        self._session.commit()
