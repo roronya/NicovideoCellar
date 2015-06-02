@@ -18,10 +18,14 @@ class NicovideoCrawler:
         self._video_repository = VideoRepository()
         self._ex_nicovideo_api = ExNicovideoAPI(self._config['mail'], self._config['password'])
 
-    def register(self, mylist_id):
+    def register(self, mylist_id, title=None, creator=None):
         if not self._mylist_repository.is_exist(mylist_id):
             mylist_info = self._ex_nicovideo_api.get_mylist_info(mylist_id)
-            mylist = MyList(id=mylist_info['id'], title=mylist_info['title'], creator=mylist_info['creator'])
+            if title is None:
+                title = mylist_info['title']
+            if creator is None:
+                creator = mylist_info['creator']
+            mylist = MyList(id=mylist_id, title=title, creator=creator)
             self._mylist_repository.save(mylist)
 
     def check_update(self):
@@ -38,8 +42,3 @@ class NicovideoCrawler:
         upload_video_ids =  set(self._ex_nicovideo_api.get_video_ids_from_mylist(mylist.id))
         unregistered_video_ids = upload_video_ids - registered_video_ids
         return unregistered_video_ids
-        
-        
-
-#crawler = NicovideoCrawler()
-#crawler.check_update()
