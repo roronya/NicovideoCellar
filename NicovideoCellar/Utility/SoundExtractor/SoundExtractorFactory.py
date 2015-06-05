@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .Extractor import Mp3ExtractorFromSwf, Mp3ExtractorFromFlv, M4aExtractorFromMp4
+from NicovideoCellar.Utility.SoundExtractor.Extractor import Mp3ExtractorFromSwf, Mp3ExtractorFromFlv, M4aExtractorFromMp4
 
 class SoundExtractorFactory:
     def create(self, video):
