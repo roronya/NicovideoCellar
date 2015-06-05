@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import subprocess
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
-
-from SoundExtractor.SoundExtractor import SoundExtractor
+from NicovideoCellar.Utility.SoundExtractor.Extractor.SoundExtractor import SoundExtractor
 
 class M4aExtractorFromMp4(SoundExtractor):
     def extract(self):

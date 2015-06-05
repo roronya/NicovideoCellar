@@ -1,12 +1,8 @@
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
-
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
-from Entity.Base import *
-from Entity.Video import Video
+from NicovideoCellar.Entity.Base import *
+from NicovideoCellar.Entity.Video import Video
 
 class MyList(Base):
     __tablename__ = 'mylist'

@@ -1,18 +1,12 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
 
-from Entity.MyList import MyList
-from Entity.Video import Video
-from Repository.MyListRepository import MyListRepository
-from Repository.VideoRepository import VideoRepository
-from NicovideoAPI.ExNicovideoAPI import ExNicovideoAPI
-from ConfigReader.ConfigReader import ConfigReader
+from NicovideoCellar.Entity import MyList, Video
+from NicovideoCellar.Repository import MyListRepository, VideoRepository
+from NicovideoCellar.Utility import ExNicovideoAPI, SoundExtractorFactory, ConfigReader
 
-class NicovideoCrawler:
-    def __init__(self):
-        self._config = ConfigReader().read(os.path.abspath(os.path.dirname(__file__)) + '/../../config.json')
+class NicovideoCellar:
+    def __init__(self, config_path):
+        self._config = ConfigReader().read(config_path)
         self._mylist_repository = MyListRepository()
         self._video_repository = VideoRepository()
         self._ex_nicovideo_api = ExNicovideoAPI(self._config['mail'], self._config['password'])
