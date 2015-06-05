@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
-
-from SoundExtractor.Mp3ExtractorFromSwf import Mp3ExtractorFromSwf
-from SoundExtractor.Mp3ExtractorFromFlv import Mp3ExtractorFromFlv
-from SoundExtractor.M4aExtractorFromMp4 import M4aExtractorFromMp4
+from .Extractor import Mp3ExtractorFromSwf, Mp3ExtractorFromFlv, M4aExtractorFromMp4
 
 class SoundExtractorFactory:
     def create(self, video):

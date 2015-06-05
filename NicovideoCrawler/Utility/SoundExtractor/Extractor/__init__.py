@@ -1,0 +1,3 @@
+from .Mp3ExtractorFromSwf import Mp3ExtractorFromSwf
+from .Mp3ExtractorFromFlv import Mp3ExtractorFromFlv
+from .M4aExtractorFromMp4 import M4aExtractorFromMp4

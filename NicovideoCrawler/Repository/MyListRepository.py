@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
-
 import re
-
 from sqlalchemy.orm import sessionmaker
-from ConfigReader.ConfigReader import ConfigReader
-from Entity.Base import *
-from Entity.MyList import MyList
+from .Utility.ConfigReader import ConfigReader
+from .Entity import MyList
+from .Entity.Base import engine
 
 class MyListRepository:
     def __init__(self):
