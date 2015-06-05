@@ -1,6 +1,6 @@
-from NicovideoCrawler import NicovideoCrawler
+from NicovideoCellar import NicovideoCellar
 
 if __name__ == '__main__':
-    nicovideo_crawler = NicovideoCrawler('./config.json')
-    nicovideo_crawler.register('34089083')
-    nicovideo_crawler.check_update()
+    nicovideo_cellar = NicovideoCellar('./config.json')
+    nicovideo_cellar.register('34089083')
+    nicovideo_cellar.check_update()

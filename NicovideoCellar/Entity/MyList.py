@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
-from .Base import *
-from .Video import Video
+from NicovideoCellar.Entity.Base import *
+from NicovideoCellar.Entity.Video import Video
 
 class MyList(Base):
     __tablename__ = 'mylist'

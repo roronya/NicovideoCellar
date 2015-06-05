@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import subprocess
-from .Base import SoundExtractor
+import os
+from NicovideoCellar.Utility.SoundExtractor.Extractor.SoundExtractor import SoundExtractor
 
 class Mp3ExtractorFromSwf(SoundExtractor):
     def extract(self):

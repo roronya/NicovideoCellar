@@ -3,8 +3,8 @@ import requests
 from pyquery import PyQuery as pq
 import re
 
-from NicovideoAPI.NicovideoAPI import NicovideoAPI
-from SoundExtractor.SoundExtractorFactory import SoundExtractorFactory
+from NicovideoCellar.Utility.NicovideoAPI.NicovideoAPI import NicovideoAPI
+from NicovideoCellar.Utility.SoundExtractor.SoundExtractorFactory import SoundExtractorFactory
 
 class ExNicovideoAPI(NicovideoAPI):
     def __init__(self, mailaddress, password):

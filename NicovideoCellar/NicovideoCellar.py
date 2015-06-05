@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from Entity import MyList, Video
-from Utility import ExNicovideoAPI, SoundExtractorFactory, ConfigReader
-from Repository import MyListRepository, VideoRepository
 
-class NicovideoCrawler:
+from NicovideoCellar.Entity import MyList, Video
+from NicovideoCellar.Repository import MyListRepository, VideoRepository
+from NicovideoCellar.Utility import ExNicovideoAPI, SoundExtractorFactory, ConfigReader
+
+class NicovideoCellar:
     def __init__(self, config_path):
         self._config = ConfigReader().read(config_path)
         self._mylist_repository = MyListRepository()

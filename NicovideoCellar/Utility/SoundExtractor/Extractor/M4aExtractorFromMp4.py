@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import subprocess
-from .Base import SoundExtractor
+import os
+from NicovideoCellar.Utility.SoundExtractor.Extractor.SoundExtractor import SoundExtractor
 
-class Mp3ExtractorFromFlv(SoundExtractor):
+class M4aExtractorFromMp4(SoundExtractor):
     def extract(self):
-        sound_path = self._video_path + '.mp3'
-        subprocess.call('ffmpeg -i ' + self._video_path + ' -acodec copy ' + sound_path, shell=True)
+        sound_path = self._video_path + '.m4a'
+        subprocess.call('ffmpeg -i ' + self._video_path + ' -vn -acodec copy ' + sound_path, shell=True)
         file_handler = open(sound_path, 'rb')
         content = file_handler.read()
         file_handler.close()
@@ -13,6 +14,7 @@ class Mp3ExtractorFromFlv(SoundExtractor):
         os.remove(self._video_path)
         sound = {'id': self._video['id'],
                  'content': content,
-                 'type': 'mp3',
+                 'type': 'm4a',
                  'title': self._video['title']}
+
         return sound

@@ -1,13 +1,9 @@
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__)) + '/..')
-
 import re
-
-from ConfigReader.ConfigReader import ConfigReader
+from NicovideoCellar.Utility.ConfigReader.ConfigReader import ConfigReader
 from sqlalchemy.orm import sessionmaker
-from Entity.Base import *
-from Entity.Video import Video
+from NicovideoCellar.Entity.Base import *
+from NicovideoCellar.Entity.Video import Video
 
 class VideoRepository:
     def __init__(self):

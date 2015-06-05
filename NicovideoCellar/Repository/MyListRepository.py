@@ -2,9 +2,9 @@
 import os
 import re
 from sqlalchemy.orm import sessionmaker
-from .Utility.ConfigReader import ConfigReader
-from .Entity import MyList
-from .Entity.Base import engine
+from NicovideoCellar.Utility.ConfigReader import ConfigReader
+from NicovideoCellar.Entity import MyList
+from NicovideoCellar.Entity.Base import engine
 
 class MyListRepository:
     def __init__(self):
