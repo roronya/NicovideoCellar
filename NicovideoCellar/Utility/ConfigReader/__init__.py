@@ -1,1 +1,1 @@
-from .ConfigReader import ConfigReader
+from NicovideoCellar.Utility.ConfigReader import ConfigReader

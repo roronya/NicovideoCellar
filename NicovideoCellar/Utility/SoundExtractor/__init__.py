@@ -1,1 +1,1 @@
-from .SoundExtractorFactory import SoundExtractorFactory
+from NicovideoCellar.Utility.SoundExtractor.SoundExtractorFactory import SoundExtractorFactory
