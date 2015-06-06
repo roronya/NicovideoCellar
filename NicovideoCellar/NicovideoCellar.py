@@ -21,7 +21,7 @@ class NicovideoCellar:
             mylist = MyList(id=mylist_id, title=title, creator=creator)
             self._mylist_repository.save(mylist)
 
-    def check_update(self):
+    def update(self):
         registered_mylists = self._mylist_repository.find_all()
         for mylist in registered_mylists:
             unregistered_video_ids = self._get_unregistered_video_ids(mylist)
@@ -29,6 +29,9 @@ class NicovideoCellar:
                 sound = self._ex_nicovideo_api.get_sound(video_id)
                 video = Video(id=video_id, content=sound['content'], title=sound['title'], type=sound['type'], mylist_id=mylist.id)
                 self._video_repository.save(video)
+
+    def get_registerd_video_ids(self):
+        return self._mylist_repository.find_all()
 
     def _get_unregistered_video_ids(self, mylist):
         registered_video_ids = set([video.id for video in mylist.videos])
