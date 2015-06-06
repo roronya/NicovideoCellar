@@ -2,14 +2,13 @@
 import os
 import re
 from sqlalchemy.orm import sessionmaker
-from NicovideoCellar.Utility import ConfigReader
 from NicovideoCellar.Entity import MyList
 from NicovideoCellar.Entity.Base import engine
 
 class MyListRepository:
-    def __init__(self):
+    def __init__(self, config):
         self._session = sessionmaker(bind=engine)()
-        self._config = ConfigReader().read(os.path.abspath(os.path.dirname(__file__)) + '/../../config.json')
+        self._config = config
 
     def find(self, id):
         return self._session.query(MyList).filter(MyList.id == id).one()

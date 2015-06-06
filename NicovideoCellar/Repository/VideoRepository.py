@@ -1,14 +1,13 @@
 import os
 import re
-from NicovideoCellar.Utility.ConfigReader.ConfigReader import ConfigReader
 from sqlalchemy.orm import sessionmaker
 from NicovideoCellar.Entity.Base import *
 from NicovideoCellar.Entity.Video import Video
 
 class VideoRepository:
-    def __init__(self):
+    def __init__(self, config):
         self._session = sessionmaker(bind=engine)()
-        self._config = ConfigReader().read(os.path.abspath(os.path.dirname(__file__)) + '/../../config.json')
+        self._config = config
 
     def save(self, video):
         self._session.add(video)
