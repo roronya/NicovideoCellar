@@ -7,8 +7,8 @@ from NicovideoCellar.Utility import ExNicovideoAPI, SoundExtractorFactory, Confi
 class NicovideoCellar:
     def __init__(self, config_path):
         self._config = ConfigReader().read(config_path)
-        self._mylist_repository = MyListRepository()
-        self._video_repository = VideoRepository()
+        self._mylist_repository = MyListRepository(self._config)
+        self._video_repository = VideoRepository(self._config)
         self._ex_nicovideo_api = ExNicovideoAPI(self._config['mail'], self._config['password'])
 
     def register(self, mylist_id, title=None, creator=None):
