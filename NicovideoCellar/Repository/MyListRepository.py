@@ -2,7 +2,7 @@
 import os
 import re
 from sqlalchemy.orm import sessionmaker
-from NicovideoCellar.Utility.ConfigReader import ConfigReader
+from NicovideoCellar.Utility import ConfigReader
 from NicovideoCellar.Entity import MyList
 from NicovideoCellar.Entity.Base import engine
 
