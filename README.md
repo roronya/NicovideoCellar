@@ -15,3 +15,9 @@
 `$HOME/.NicovideoCellar/bin`
 
 をPATHに追加
+
+### 設定
+.NicovideoCellar/config.json.distをconfig.jsonにリネームして、ニコ動のログインメールアドレスとパスワードと、ダウンロードしてきたムービーを保存するパスを書き込んむ
+
+### 使い方
+`nvc`
