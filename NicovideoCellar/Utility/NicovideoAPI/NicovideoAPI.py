@@ -44,14 +44,19 @@ class NicovideoAPI:
                 
     def get_flv(self, video_id):
         flv_url = self._get_flv_url(video_id)
-        self._cookies.update(self._get_nicohistory_cookie(video_id))
         response = requests.get(flv_url, cookies=self._cookies)
         content = response.content        
         
         return content
 
     def _get_flv_url(self, video_id):
-        response = requests.get('http://flapi.nicovideo.jp/api/getflv/' + video_id, cookies=self._cookies)
+        self._cookies.update(self._get_nicohistory_cookie(video_id))
+
+        getflv_url = 'http://flapi.nicovideo.jp/api/getflv/{0}'.format(video_id)
+        if video_id[:2] == 'nm':
+            getflv_url = 'http://flapi.nicovideo.jp/api/getflv/{0}?as3=1'.format(video_id)
+        
+        response = requests.get(getflv_url, cookies=self._cookies)
         response_body = urllib.parse.unquote(response.text)
         flv_url = re.search(r'url=([^&]+)', response_body).group(1)
         
